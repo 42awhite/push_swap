@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/03/31 17:48:48 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:24:51 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	ft_n_to_nod(char **num, t_push *push)
 		pt = ft_calloc(1, sizeof(t_in_nd));
 		if (pt == NULL)
 			exit (-1);
-				system("leaks -q push_swap");
 		pt->n = ft_atoi(num[cont]);
 		aux = ft_lstnew(pt);
 		ft_lstadd_back(&push->stack_a, aux);
@@ -118,13 +117,15 @@ int	main(int argc, char **argv)
 	ft_bzero(&push, sizeof(t_push));
 	n_join = ft_strdup(argv[1]);
 	cont = 2;
-	push.stack_b = ft_lstnew(NULL);
+
+	//push.stack_b = NULL;
+	//push.stack_b = ft_lstnew(NULL);
 	while (argv[cont])
 	{
 		n_join = join_argv(n_join, argv[cont]);
 		cont++;
 	}
-	printf("%s\n", n_join);
+	//printf("%s\n", n_join);
 	n = ft_split_n(n_join);
 //	free(n_join);
 	ft_n_comp(n);
@@ -135,10 +136,21 @@ int	main(int argc, char **argv)
 		exit(-1);
 	}
 	ft_n_to_nod(n, &push);
+
+	//swap_a_b(&push.stack_a, &push.stack_b);
+	ft_push(&push.stack_a, &push.stack_b, 'b');
+	ft_push(&push.stack_a, &push.stack_b, 'b');
+	ft_push(&push.stack_a, &push.stack_b, 'b');
+	printf("STACK A: \n");
 	ft_lstiter(push.stack_a, &fnc);
-	swap_a(&push.stack_a);
-	printf("/////////DESPUES DEL SWAP /////////");
+	printf("STACK B: \n");
+	ft_lstiter(push.stack_b, &fnc);
+	reverse_select(&push.stack_a, &push.stack_b);
+	printf("/////////DESPUES DEL REVERSE /////////\n");
+	printf("STACK A: \n");
 	ft_lstiter(push.stack_a, &fnc);
+	printf("STACK B: \n");
+	ft_lstiter(push.stack_b, &fnc);
 //	system("leaks -q push_swap");
 	//printf("%d", *(int *)(node->content));
 }
