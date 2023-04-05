@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/02 20:24:51 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/05 02:27:14 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**ft_split_n(char *str)
 void	fnc(void *par) //Función para print el interor del nodo
 {
 	t_in_nd *lst = par;
-	printf("%d\n", lst->n);
+	printf("%d\n", lst->idx);
 }
 
 void	ft_n_comp(char **num)
@@ -117,9 +117,6 @@ int	main(int argc, char **argv)
 	ft_bzero(&push, sizeof(t_push));
 	n_join = ft_strdup(argv[1]);
 	cont = 2;
-
-	//push.stack_b = NULL;
-	//push.stack_b = ft_lstnew(NULL);
 	while (argv[cont])
 	{
 		n_join = join_argv(n_join, argv[cont]);
@@ -137,20 +134,18 @@ int	main(int argc, char **argv)
 	}
 	ft_n_to_nod(n, &push);
 
-	//swap_a_b(&push.stack_a, &push.stack_b);
-	ft_push(&push.stack_a, &push.stack_b, 'b');
-	ft_push(&push.stack_a, &push.stack_b, 'b');
-	ft_push(&push.stack_a, &push.stack_b, 'b');
 	printf("STACK A: \n");
 	ft_lstiter(push.stack_a, &fnc);
-	printf("STACK B: \n");
-	ft_lstiter(push.stack_b, &fnc);
-	reverse_select(&push.stack_a, &push.stack_b);
-	printf("/////////DESPUES DEL REVERSE /////////\n");
+	add_idx(&push.stack_a);
+	//printf("STACK B: \n");
+	//ft_lstiter(push.stack_b, &fnc);
+	//reverse_select(&push.stack_a, &push.stack_b);
+	printf("/////////DESPUES DEL idx /////////\n");
 	printf("STACK A: \n");
 	ft_lstiter(push.stack_a, &fnc);
-	printf("STACK B: \n");
-	ft_lstiter(push.stack_b, &fnc);
+	org_few_n(&push.stack_a, &push.stack_b);
+	//printf("STACK B: \n");
+	//ft_lstiter(push.stack_b, &fnc);
 //	system("leaks -q push_swap");
 	//printf("%d", *(int *)(node->content));
 }
