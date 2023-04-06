@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:23:38 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/05 00:51:51 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:29:41 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	add_idx(t_list **stack_a)
 		other_n = *stack_a;
 		while (other_n)
 		{
-			if (comp->content < other_n->content)
+			if (((t_in_nd *)comp->content)->n > ((t_in_nd *)other_n->content)->n)
 				cont++;
-		other_n = other_n->next;
+			other_n = other_n->next;
 		}
 		((t_in_nd *)comp->content)->idx = cont;
 		comp = comp->next;
@@ -36,12 +36,14 @@ void	add_idx(t_list **stack_a)
 
 int	n_nod(t_list **stack_a)
 {
-	int	cont;
+	int		cont;
+	t_list 	*aux;
 
 	cont = 0;
-	while(*stack_a)
+	aux = *stack_a;
+	while(aux)
 	{
-		*stack_a = (*stack_a)->next;
+		aux = aux->next;
 		cont++;
 	}
 	return(cont);

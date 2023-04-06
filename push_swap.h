@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:23:01 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/05 02:17:13 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/06 02:22:31 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	reverse_rotate(t_list **stack);
 void	reverse_select(t_list **stack_a, t_list **stack_b);
 void	add_idx(t_list **stack_a);
 int		n_nod(t_list **stack_a);
-void	org_few_n(t_list **stack_a, t_list **stack_b);
-void	idx_control(t_list **stack_a, t_list **stack_b);
+void	org_few_n(t_list **stack_a, t_list **stack_b, int n_nods);
+int		idx_control(t_list **stack_b, int n_nodos);
+void	fnc(void *par);

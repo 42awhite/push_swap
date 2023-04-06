@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 19:24:43 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/02 20:23:09 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:48:32 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	ft_push(t_list **stack_out, t_list **stack_add, char c)
 	*stack_out = (*stack_out)->next;
 	(*stack_add)->next = aux;
 	if (c == 'a')
-		ft_printf("pa");
+		ft_printf("pa\n");
 	else if (c == 'b')
-		ft_printf("pb");
+		ft_printf("pb\n");
 }
 
 void	rotate(t_list **stack)
