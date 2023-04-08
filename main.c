@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/08 20:20:36 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:45:07 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,77 +18,6 @@ char	**ft_split_n(char *str)
 
 	n = ft_split(str, ' ');
 	return (n);
-}
-
-//void	fnc(void *par) //Función para print el interor del nodo
-//{
-//	t_in_nd *lst = par;
-//	printf("%3d - %4d\n", lst->idx, lst->n);
-//}
-
-void	ft_n_comp(char **num)
-{
-	int	cont;
-	int	cont2;
-
-	cont = 0;
-	while (num[cont])
-	{
-		cont2 = cont + 1;
-		while (num[cont2])
-		{
-			if (ft_strncmp(num[cont], num[cont2]) == 0)
-			{
-				perror("n iguales");
-				exit(-1);
-			}
-			cont2++;
-		}
-		cont++;
-	}
-}
-
-void	str_is_n(char **num)
-{
-	int	cont;
-	int	cont2;
-
-	cont = 0;
-	cont2 = 0;
-	while (num[cont])
-	{
-		while (num[cont][cont2])
-		{
-			if ((num[cont][cont2] < '0' || num[cont][cont2] > '9') &&
-				(num[cont][cont2] != '\0'))
-			{
-				perror("no n");
-				exit(-1);
-			}
-			cont2++;
-		}
-		cont2 = 0;
-		cont++;
-	}
-}
-
-void	ft_n_to_nod(char **num, t_push *push)
-{
-	int			cont;
-	t_in_nd		*pt;
-	t_list		*aux;
-
-	cont = 0;
-	while (num[cont])
-	{
-		pt = ft_calloc(1, sizeof(t_in_nd));
-		if (pt == NULL)
-			exit (-1);
-		pt->n = ft_atoi(num[cont]);
-		aux = ft_lstnew(pt);
-		ft_lstadd_back(&push->stack_a, aux);
-		cont++;
-	}
 }
 
 char	*join_argv(char *old_str, char *to_join)
@@ -103,24 +32,10 @@ char	*join_argv(char *old_str, char *to_join)
 	return (aux);
 }
 
-int	main(int argc, char **argv)
+void	call_ft(char **n, t_push push)
 {
-	char	**n;
-	char	*n_join;
-	t_push	push;
-	int		cont;
-	int		n_nods;
+	int	n_nods;
 
-	(void)argc;
-	ft_bzero(&push, sizeof(t_push));
-	n_join = ft_strdup(argv[1]);
-	cont = 2;
-	while (argv[cont])
-	{
-		n_join = join_argv(n_join, argv[cont]);
-		cont++;
-	}
-	n = ft_split_n(n_join);
 	ft_n_comp(n);
 	str_is_n(n);
 	if (n == NULL)
@@ -138,18 +53,24 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_radix(&push.stack_a, &push.stack_b, n_nods);
-	
-	//system("leaks -q push_swap");
-	//printf("STACK A: \n");
-	//ft_lstiter(push.stack_a, &fnc);
-	//printf("STACK B: \n");
-	//ft_lstiter(push.stack_b, &fnc);
+}
 
+int	main(int argc, char **argv)
+{
+	char	**n;
+	char	*n_join;
+	t_push	push;
+	int		cont;
 
-	//printf("/////////DESPUES DEL ORG IDX /////////\n");
-	//printf("STACK A: \n");
-	//ft_lstiter(push.stack_a, &fnc);
-	//printf("STACK B: \n");
-	//ft_lstiter(push.stack_b, &fnc);
-	//printf("%d", *(int *)(node->content));
+	(void)argc;
+	ft_bzero(&push, sizeof(t_push));
+	n_join = ft_strdup(argv[1]);
+	cont = 2;
+	while (argv[cont])
+	{
+		n_join = join_argv(n_join, argv[cont]);
+		cont++;
+	}
+	n = ft_split_n(n_join);
+	call_ft(n, push);
 }

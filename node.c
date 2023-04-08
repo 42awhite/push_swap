@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:23:38 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/06 17:18:16 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:48:46 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	add_idx(t_list **stack_a)
 		other_n = *stack_a;
 		while (other_n)
 		{
-			if (((t_in_nd *)comp->content)->n > ((t_in_nd *)other_n->content)->n)
+			if (((t_in_nd *)comp->content)->n
+				> ((t_in_nd *)other_n->content)->n)
 				cont++;
 			other_n = other_n->next;
 		}
@@ -37,15 +38,33 @@ void	add_idx(t_list **stack_a)
 int	n_nod(t_list **stack_a)
 {
 	int		cont;
-	t_list 	*aux;
+	t_list	*aux;
 
 	cont = 0;
 	aux = *stack_a;
-	while(aux)
+	while (aux)
 	{
 		aux = aux->next;
 		cont++;
 	}
-	return(cont);
+	return (cont);
 }
 
+void	ft_n_to_nod(char **num, t_push *push)
+{
+	int			cont;
+	t_in_nd		*pt;
+	t_list		*aux;
+
+	cont = 0;
+	while (num[cont])
+	{
+		pt = ft_calloc(1, sizeof(t_in_nd));
+		if (pt == NULL)
+			exit (-1);
+		pt->n = ft_atoi(num[cont]);
+		aux = ft_lstnew(pt);
+		ft_lstadd_back(&push->stack_a, aux);
+		cont++;
+	}
+}

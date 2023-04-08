@@ -6,19 +6,19 @@
 #    By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 18:45:05 by ablanco-          #+#    #+#              #
-#    Updated: 2023/04/08 19:49:11 by ablanco-         ###   ########.fr        #
+#    Updated: 2023/04/08 23:15:43 by ablanco-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC		=	main.c swap.c node.c organize.c
+SRC		=	main.c swap.c node.c organize.c error.c rotate.c
 
 OBJS	= $(SRC:.c=.o)
 LIB		= 	./libft
 
 CC		= gcc
-CFLAGS 	= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
