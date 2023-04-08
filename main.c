@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/08 19:59:56 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:20:36 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ char	**ft_split_n(char *str)
 	return (n);
 }
 
-void	fnc(void *par) //Función para print el interor del nodo
-{
-	t_in_nd *lst = par;
-	printf("%3d - %4d\n", lst->idx, lst->n);
-}
+//void	fnc(void *par) //Función para print el interor del nodo
+//{
+//	t_in_nd *lst = par;
+//	printf("%3d - %4d\n", lst->idx, lst->n);
+//}
 
 void	ft_n_comp(char **num)
 {
@@ -59,7 +59,8 @@ void	str_is_n(char **num)
 	{
 		while (num[cont][cont2])
 		{
-			if ((num[cont][cont2] < '0' || num[cont][cont2] > '9') && (num[cont][cont2] != '\0'))
+			if ((num[cont][cont2] < '0' || num[cont][cont2] > '9') &&
+				(num[cont][cont2] != '\0'))
 			{
 				perror("no n");
 				exit(-1);
@@ -130,18 +131,19 @@ int	main(int argc, char **argv)
 	ft_n_to_nod(n, &push);
 	add_idx(&push.stack_a);
 	n_nods = n_nod(&push.stack_a);
-	if (n_nods <= 10)
+	if (n_nods <= 60)
 	{
-		org_few_n(&push.stack_a, &push.stack_b, n_nods); 
-		ft_all_btoa(&push.stack_a, &push.stack_b); 
+		org_few_n(&push.stack_a, &push.stack_b, n_nods);
+		ft_all_btoa(&push.stack_a, &push.stack_b);
 	}
 	else
-		system("leaks -q push_swap");
+		ft_radix(&push.stack_a, &push.stack_b, n_nods);
+	
+	//system("leaks -q push_swap");
 	//printf("STACK A: \n");
 	//ft_lstiter(push.stack_a, &fnc);
 	//printf("STACK B: \n");
 	//ft_lstiter(push.stack_b, &fnc);
-	//ft_radix(&push.stack_a, &push.stack_b, n_nods);
 
 
 	//printf("/////////DESPUES DEL ORG IDX /////////\n");
