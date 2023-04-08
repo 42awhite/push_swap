@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:23:01 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/06 02:22:31 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:59:56 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_in_nd
 
 typedef struct s_push
 {
-	//t_list	*list; //cambiar el aux por los stacks;
 	t_list	*stack_a;
 	t_list 	*stack_b;
 }		t_push;
@@ -43,4 +42,6 @@ void	add_idx(t_list **stack_a);
 int		n_nod(t_list **stack_a);
 void	org_few_n(t_list **stack_a, t_list **stack_b, int n_nods);
 int		idx_control(t_list **stack_b, int n_nodos);
+void 	ft_all_btoa(t_list **stack_a, t_list **stack_b);
 void	fnc(void *par);
+void	ft_radix(t_list **stack_a, t_list **stack_b, int n_nods);

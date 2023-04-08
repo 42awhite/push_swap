@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:23:38 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/06 00:29:41 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:18:16 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	add_idx(t_list **stack_a)
 	comp = *stack_a;
 	while (comp)
 	{
-		cont = 0;
+		cont = 1;
 		other_n = *stack_a;
 		while (other_n)
 		{

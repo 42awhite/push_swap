@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/06 02:22:13 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:59:56 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ void	ft_n_to_nod(char **num, t_push *push)
 		ft_lstadd_back(&push->stack_a, aux);
 		cont++;
 	}
-	//ft_lstiter(push->stack_a, &fnc);
 }
 
-//Usar strdup con un argv1
 char	*join_argv(char *old_str, char *to_join)
 {
 	char	*aux;
@@ -103,8 +101,6 @@ char	*join_argv(char *old_str, char *to_join)
 	free(space);
 	return (aux);
 }
-//Hacer una estructura con el contenido del nodo, que va a ser
-//int, indice = posición del numero en la lista de menor a mayor
 
 int	main(int argc, char **argv)
 {
@@ -123,9 +119,7 @@ int	main(int argc, char **argv)
 		n_join = join_argv(n_join, argv[cont]);
 		cont++;
 	}
-	//printf("%s\n", n_join);
 	n = ft_split_n(n_join);
-//	free(n_join);
 	ft_n_comp(n);
 	str_is_n(n);
 	if (n == NULL)
@@ -135,19 +129,25 @@ int	main(int argc, char **argv)
 	}
 	ft_n_to_nod(n, &push);
 	add_idx(&push.stack_a);
-
-	printf("STACK A: \n");
-	ft_lstiter(push.stack_a, &fnc);
-	
-	printf("STACK B: \n");
-	ft_lstiter(push.stack_b, &fnc);
 	n_nods = n_nod(&push.stack_a);
-	org_few_n(&push.stack_a, &push.stack_b, n_nods);
-	printf("/////////DESPUES DEL ORG IDX /////////\n");
-	printf("STACK A: \n");
-	ft_lstiter(push.stack_a, &fnc);
-	printf("STACK B: \n");
-	ft_lstiter(push.stack_b, &fnc);
-//	system("leaks -q push_swap");
+	if (n_nods <= 10)
+	{
+		org_few_n(&push.stack_a, &push.stack_b, n_nods); 
+		ft_all_btoa(&push.stack_a, &push.stack_b); 
+	}
+	else
+		system("leaks -q push_swap");
+	//printf("STACK A: \n");
+	//ft_lstiter(push.stack_a, &fnc);
+	//printf("STACK B: \n");
+	//ft_lstiter(push.stack_b, &fnc);
+	//ft_radix(&push.stack_a, &push.stack_b, n_nods);
+
+
+	//printf("/////////DESPUES DEL ORG IDX /////////\n");
+	//printf("STACK A: \n");
+	//ft_lstiter(push.stack_a, &fnc);
+	//printf("STACK B: \n");
+	//ft_lstiter(push.stack_b, &fnc);
 	//printf("%d", *(int *)(node->content));
 }
