@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:23:01 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/08 23:01:32 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:09:20 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	reverse_select(t_list **stack_a, t_list **stack_b);
 void	add_idx(t_list **stack_a);
 int		n_nod(t_list **stack_a);
 void	org_few_n(t_list **stack_a, t_list **stack_b, int n_nods);
-int		idx_control(t_list **stack_b, int n_nodos);
+int		check_all_in_stack_b(t_list **stack_b, int n_nodos);
 void	ft_all_btoa(t_list **stack_a, t_list **stack_b);
 void	ft_radix(t_list **stack_a, t_list **stack_b, int n_nods);
 void	str_is_n(char **num);
-void	ft_n_comp(char **num);
+void	ft_n_comp(t_list **stack_a);
 void	ft_n_to_nod(char **num, t_push *push);
+void	three_n(t_list **stack_a);
+void	n_less_ten(t_list **stack_a, t_list **stack_b, int n_total);
 
 #endif

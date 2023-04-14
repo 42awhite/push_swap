@@ -6,19 +6,11 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/08 22:45:07 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/13 21:12:32 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	**ft_split_n(char *str)
-{
-	char	**n;
-
-	n = ft_split(str, ' ');
-	return (n);
-}
 
 char	*join_argv(char *old_str, char *to_join)
 {
@@ -32,27 +24,31 @@ char	*join_argv(char *old_str, char *to_join)
 	return (aux);
 }
 
-void	call_ft(char **n, t_push push)
+static void	call_ft(char **n, t_push *push)
 {
 	int	n_nods;
 
-	ft_n_comp(n);
 	str_is_n(n);
 	if (n == NULL)
 	{
 		perror("error");
 		exit(-1);
 	}
-	ft_n_to_nod(n, &push);
-	add_idx(&push.stack_a);
-	n_nods = n_nod(&push.stack_a);
-	if (n_nods <= 60)
+	ft_n_to_nod(n, push);
+	ft_n_comp(&push->stack_a);
+	add_idx(&push->stack_a);
+	n_nods = n_nod(&push->stack_a);
+	if (n_nods < 10)
 	{
-		org_few_n(&push.stack_a, &push.stack_b, n_nods);
-		ft_all_btoa(&push.stack_a, &push.stack_b);
+		n_less_ten(&push->stack_a, &push->stack_b, n_nods);
+	}
+	else if (n_nods <= 60 && n_nods >= 10)
+	{
+		org_few_n(&push->stack_a, &push->stack_b, n_nods);
+		ft_all_btoa(&push->stack_a, &push->stack_b);
 	}
 	else
-		ft_radix(&push.stack_a, &push.stack_b, n_nods);
+		ft_radix(&push->stack_a, &push->stack_b, n_nods);
 }
 
 int	main(int argc, char **argv)
@@ -71,6 +67,6 @@ int	main(int argc, char **argv)
 		n_join = join_argv(n_join, argv[cont]);
 		cont++;
 	}
-	n = ft_split_n(n_join);
-	call_ft(n, push);
+	n = ft_split(n_join, ' ');
+	call_ft(n, &push);
 }

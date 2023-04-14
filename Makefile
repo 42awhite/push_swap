@@ -6,13 +6,13 @@
 #    By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 18:45:05 by ablanco-          #+#    #+#              #
-#    Updated: 2023/04/08 23:15:43 by ablanco-         ###   ########.fr        #
+#    Updated: 2023/04/14 17:55:49 by ablanco-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC		=	main.c swap.c node.c organize.c error.c rotate.c
+SRC		=	main.c swap.c node.c organize.c error.c rotate.c org_less_ten.c
 
 OBJS	= $(SRC:.c=.o)
 LIB		= 	./libft

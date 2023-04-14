@@ -6,13 +6,13 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:51:36 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/08 23:54:25 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:54:09 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	idx_control(t_list **stack_b, int n_nodos)
+int	check_all_in_stack_b(t_list **stack_b, int n_nodos)
 {
 	t_list	*search;
 
@@ -36,16 +36,17 @@ void	org_few_n(t_list **stack_a, t_list **stack_b, int n_total)
 		search = search->next;
 		pos++;
 	}
-	if (pos < (n_nod(stack_a) / 2) && idx_control(stack_b, n_total))
+	if (pos < (n_nod(stack_a) / 2) && check_all_in_stack_b(stack_b, n_total))
 	{
 		while (*stack_a != search)
 			rotate_select(stack_a, NULL);
 	}
-	else if (pos >= (n_nod(stack_a) / 2) && idx_control(stack_b, n_total))
+	else if (pos >= (n_nod(stack_a) / 2)
+		&& check_all_in_stack_b(stack_b, n_total))
 		while (*stack_a != search)
 			reverse_select(stack_a, NULL);
 	ft_push(stack_a, stack_b, 'b');
-	if (idx_control(stack_b, n_total))
+	if (check_all_in_stack_b(stack_b, n_total))
 		org_few_n(stack_a, stack_b, n_total);
 }
 
