@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:51:37 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/14 18:10:34 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:35:07 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	three_n(t_list **stack_a)
 		reverse_select(stack_a, NULL);
 }
 
-int	found_next(t_list *search, int cont)
+int	found_next(t_list **search, int cont)
 {
 	int	pos;
 
 	pos = 0;
-	while (((t_in_nd *)search->content)->idx != cont && search->next)
+	while (((t_in_nd *)(*search)->content)->idx != cont && (*search)->next)
 	{
-		search = search->next;
+		*search = (*search)->next;
 		pos++;
 	}
 	return (pos);
@@ -76,7 +76,7 @@ void	n_less_ten(t_list **stack_a, t_list **stack_b, int n_total)
 		three_n(stack_a);
 		return ;
 	}
-	pos = found_next(search, cont);
+	pos = found_next(&search, cont);
 	rotate_halves(stack_a, search, pos);
 	ft_push(stack_a, stack_b, 'b');
 	if (check_all_in_stack_b(stack_b, (n_total - 3)))

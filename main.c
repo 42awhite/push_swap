@@ -6,11 +6,21 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/13 21:12:32 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:10:08 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	two_n(t_list **stack_a)
+{
+	int	n[2];
+
+	n[0] = ((t_in_nd *)(*stack_a)->content)->idx;
+	n[1] = ((t_in_nd *)(*stack_a)->next->content)->idx;
+	if (n[0] > n[1])
+		swap_a_b(stack_a, NULL);
+}
 
 char	*join_argv(char *old_str, char *to_join)
 {
@@ -38,7 +48,9 @@ static void	call_ft(char **n, t_push *push)
 	ft_n_comp(&push->stack_a);
 	add_idx(&push->stack_a);
 	n_nods = n_nod(&push->stack_a);
-	if (n_nods < 10)
+	if (n_nods == 2)
+		two_n(&push->stack_a);
+	else if (n_nods < 10)
 	{
 		n_less_ten(&push->stack_a, &push->stack_b, n_nods);
 	}

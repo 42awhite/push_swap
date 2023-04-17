@@ -6,7 +6,7 @@
 #    By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 18:45:05 by ablanco-          #+#    #+#              #
-#    Updated: 2023/04/14 17:55:49 by ablanco-         ###   ########.fr        #
+#    Updated: 2023/04/17 16:31:18 by ablanco-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS	= $(SRC:.c=.o)
 LIB		= 	./libft
 
 CC		= gcc
-CFLAGS 	= -Wall -Wextra -Werror
+CFLAGS 	= -Wall -Wextra -Werror -g3
 
 RM		= rm -f
 
