@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/17 20:10:08 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:36:14 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	call_ft(char **n, t_push *push)
 	n_nods = n_nod(&push->stack_a);
 	if (n_nods == 2)
 		two_n(&push->stack_a);
-	else if (n_nods < 10)
+	else if (n_nods < 10 && n_nods > 2)
 	{
 		n_less_ten(&push->stack_a, &push->stack_b, n_nods);
 	}
