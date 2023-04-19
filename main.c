@@ -6,21 +6,11 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/17 20:36:14 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:55:08 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	two_n(t_list **stack_a)
-{
-	int	n[2];
-
-	n[0] = ((t_in_nd *)(*stack_a)->content)->idx;
-	n[1] = ((t_in_nd *)(*stack_a)->next->content)->idx;
-	if (n[0] > n[1])
-		swap_a_b(stack_a, NULL);
-}
 
 char	*join_argv(char *old_str, char *to_join)
 {
