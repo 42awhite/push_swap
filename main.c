@@ -6,7 +6,7 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/19 18:28:34 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:52:07 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	main(int argc, char **argv)
 	t_push	push;
 	int		cont;
 
-	(void)argc;
+	if (argc == 1)
+		return (0);
 	ft_bzero(&push, sizeof(t_push));
 	n_join = ft_strdup(argv[1]);
 	cont = 2;
