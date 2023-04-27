@@ -6,11 +6,30 @@
 /*   By: ablanco- <ablanco-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:21 by ablanco-          #+#    #+#             */
-/*   Updated: 2023/04/19 19:52:07 by ablanco-         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:32:47 by ablanco-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	all_order(t_list **stack_a)
+{
+	t_list	*idx;
+	int		cont;
+
+	idx = *stack_a;
+	cont = 1;
+	while (idx)
+	{
+		if (((t_in_nd *)idx->content)->idx != cont)
+		{
+			return ;
+		}
+		idx = idx->next;
+		cont++;
+	}
+	exit (1);
+}
 
 char	*join_argv(char *old_str, char *to_join)
 {
@@ -24,10 +43,8 @@ char	*join_argv(char *old_str, char *to_join)
 	return (aux);
 }
 
-static void	call_ft(char **n, t_push *push)
+static void	call_ft(char **n, t_push *push, int n_nods)
 {
-	int	n_nods;
-
 	str_is_n(n);
 	if (n == NULL)
 	{
@@ -37,6 +54,7 @@ static void	call_ft(char **n, t_push *push)
 	ft_n_to_nod(n, push);
 	ft_n_comp(&push->stack_a);
 	add_idx(&push->stack_a);
+	all_order(&push->stack_a);
 	n_nods = n_nod(&push->stack_a);
 	if (n_nods == 2)
 		two_n(&push->stack_a);
@@ -71,5 +89,5 @@ int	main(int argc, char **argv)
 		cont++;
 	}
 	n = ft_split(n_join, ' ');
-	call_ft(n, &push);
+	call_ft(n, &push, 0);
 }
